@@ -1,4 +1,5 @@
-﻿using Mips16bits.DataBase;
+﻿using Mips16bits.Compiler;
+using Mips16bits.DataBase;
 using Mips16bits.Entity;
 using Mips16bits.Mips;
 using System;
@@ -21,6 +22,8 @@ namespace Mips16bits
         Instruction ins = new Instruction();
         int insMemory = 0x00400000;
         List<Instruction> ınstructions;
+
+
         public Form1()
         {
             mipsCon = new ConverMipsToMachine();
@@ -32,7 +35,7 @@ namespace Mips16bits
      
         private void showAllRegister()
         {
-            foreach (Register s in this.registerdb.getRegisters())
+            foreach (Register s in registerdb.getRegisters())
             {
 
                 this.item = new ListViewItem(s.name);
@@ -73,7 +76,8 @@ namespace Mips16bits
                     int val = this.insMemory + (k * 4);
                     ins = new Instruction(richTextBox1.Lines[i], val);
                     this.ınstructions.Add(ins);
-                    mipsCon.converToMac(ins);
+                   
+                    MipsCompiler compiler = new MipsCompiler(mipsCon.converToMac(ins));
 
                     if (richTextBox1.Lines[i].Contains(":"))
                     {
@@ -94,6 +98,8 @@ namespace Mips16bits
         private void button1_Click(object sender, EventArgs e)
         {
             createInstruction();
+            this.listView1.Items.Clear();
+            showAllRegister();
         }
     }
 }

@@ -54,9 +54,9 @@ namespace Mips16bits
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1041, 12);
+            this.listView1.Location = new System.Drawing.Point(1031, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(206, 466);
+            this.listView1.Size = new System.Drawing.Size(245, 466);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -72,7 +72,7 @@ namespace Mips16bits
             // columnHeader3
             // 
             this.columnHeader3.Text = "Value";
-            this.columnHeader3.Width = 80;
+            this.columnHeader3.Width = 120;
             // 
             // button1
             // 

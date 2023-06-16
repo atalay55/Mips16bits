@@ -13,7 +13,7 @@ namespace Mips16bits.Mips
         MachineCode machineCode;
         ValueTable valueTable;
         RegisterDb registerDb;
-
+   
         public MachineCode converToMac( Instruction ins )
         {
             machineCode = new MachineCode();
@@ -38,6 +38,9 @@ namespace Mips16bits.Mips
             }
 
             machineCode.machineCode = machineCode.machineCode + "00";
+
+
+
 
             return machineCode;
 

@@ -39,6 +39,16 @@ namespace Mips16bits.Entity
             return table.Find(p => p.name == name).value;
 
         }
+        public string getType(string name)
+        {
+            return table.Find(p => p.name == name).type;
+
+        }
+        public string getname(string value)
+        {
+            return table.Find(p => p.value == value).name;
+
+        }
 
     }
 }

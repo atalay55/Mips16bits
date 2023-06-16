@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mips16bits.Entity
 {
-    class MachineCode
+    public class MachineCode
     {
 
         public MachineCode() { }
@@ -13,8 +13,10 @@ namespace Mips16bits.Entity
             this.machineCode = machineCode;
             this.mipsCode = mipsCode;
         }
+
         public string machineCode { get; set; }
         public string mipsCode { get; set; }
+        public string type { get; set; }
 
     }
 }

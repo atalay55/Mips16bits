@@ -2,21 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Mips16bits.DataBase
 {
     class RegisterDb
     {
-        List<Register> registers;
+       static List<Register> registers;
         public RegisterDb()
         {
             registers = new List<Register>() {
             new Register("$v0","0","0x00000000","000"),
             new Register("$a0","1","0x00000000","001"),
             new Register("$t0","2","0x00000000","010"),
-            new Register("$t1","3","0x00000000","011"),
+            new Register("$t1","3","0x00000001","011"),
             new Register("$t2","4","0x00000000","100"),
             new Register("$t3","5","0x00000000","101"),
             new Register("$sp","6","0x00000000","110"),
@@ -30,19 +29,21 @@ namespace Mips16bits.DataBase
 
         public List<Register> getRegisters()
         {
-            return this.registers;
+            return registers;
         }
         public Register getRegister(string registerName)
         {
-            return this.registers.Where(p => p.name == registerName).First();
+            return registers.Where(p => p.name == registerName).First();
         }
         public void changeValue(Register r)
         {
-            this.registers.Where(p => p.name == r.name).First().value = r.value;
+          registers.Where(p => p.name == r.name).First().value = r.value;
         }
         public void assignValue(Register r, string registerValue)
         {
-            this.registers.Where(p => p.name == r.name).First().value = registerValue;
+
+          registers.Where(p => p.name == r.name).First().value = registerValue ;
+
         }
 
         public string getRegisterIndex(string registerName)
@@ -53,7 +54,11 @@ namespace Mips16bits.DataBase
         {
             return registers.Find(p => p.name == registerName).registerValue;
         }
-
-
+        public Register getRegisterWithRegisterValue(string registerValue)
+        {
+            return registers.Where(p => p.registerValue == registerValue).First();
+        }
     }
+
+    
 }
