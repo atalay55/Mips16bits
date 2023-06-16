@@ -35,13 +35,18 @@ namespace Mips16bits
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.Adress = new System.Windows.Forms.ColumnHeader();
+            this.Value1 = new System.Windows.Forms.ColumnHeader();
+            this.Value2 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(8, 8);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(772, 470);
+            this.richTextBox1.Size = new System.Drawing.Size(803, 435);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -84,11 +89,54 @@ namespace Mips16bits
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(840, 218);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 44);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "delete";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Adress,
+            this.Value1,
+            this.Value2});
+            this.listView2.FullRowSelect = true;
+            this.listView2.GridLines = true;
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(74, 449);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(621, 187);
+            this.listView2.TabIndex = 6;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // Adress
+            // 
+            this.Adress.Text = "Adress";
+            this.Adress.Width = 120;
+            // 
+            // Value1
+            // 
+            this.Value1.Text = "Value1";
+            this.Value1.Width = 120;
+            // 
+            // Value2
+            // 
+            this.Value2.Text = "Value2";
+            this.Value2.Width = 120;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1288, 675);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.richTextBox1);
@@ -107,6 +155,11 @@ namespace Mips16bits
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader Adress;
+        private System.Windows.Forms.ColumnHeader Value1;
+        private System.Windows.Forms.ColumnHeader Value2;
     }
 }
 

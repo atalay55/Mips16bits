@@ -14,7 +14,7 @@ namespace Mips16bits.DataBase
             registers = new List<Register>() {
             new Register("$v0","0","0x00000000","000"),
             new Register("$a0","1","0x00000000","001"),
-            new Register("$t0","2","0x00000000","010"),
+            new Register("$t0","2","0x00000002","010"),
             new Register("$t1","3","0x00000001","011"),
             new Register("$t2","4","0x00000000","100"),
             new Register("$t3","5","0x00000000","101"),
@@ -42,7 +42,7 @@ namespace Mips16bits.DataBase
         public void assignValue(Register r, string registerValue)
         {
 
-          registers.Where(p => p.name == r.name).First().value = registerValue ;
+          registers.Where(p => p.name == r.name).First().value = "0x"+ registerValue ;
 
         }
 

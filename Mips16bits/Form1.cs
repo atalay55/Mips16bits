@@ -101,5 +101,11 @@ namespace Mips16bits
             this.listView1.Items.Clear();
             showAllRegister();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+        }
     }
 }
