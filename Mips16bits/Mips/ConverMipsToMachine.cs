@@ -38,6 +38,12 @@ namespace Mips16bits.Mips
             {
                 foreach (string r in variableList)
                 {
+                    if (r == "$ra") {
+
+
+                        machineCode.machineCode = machineCode.machineCode + "000000";
+
+                    }
                     machineCode.machineCode = machineCode.machineCode + (registerDb.getRegisterValue(r));
 
 
@@ -52,7 +58,16 @@ namespace Mips16bits.Mips
                     string dest = variableList[1].Split("(")[1].Trim(')');
                     string offset = variableList[1].Split("(")[0];
                     machineCode.machineCode = machineCode.machineCode + (registerDb.getRegisterValue(dest));
-                    machineCode.machineCode = machineCode.machineCode + Convert.ToString(int.Parse(offset), 2).PadLeft(5, '0');
+                    // machineCode.machineCode = machineCode.machineCode + Convert.ToString(int.Parse(offset), 2).PadLeft(5, '0');
+                    try
+                    {
+                        machineCode.machineCode = machineCode.machineCode + Convert.ToString(int.Parse(offset), 2).PadLeft(5, '0');
+                    }
+                    catch
+                    {
+                        offset = Convert.ToInt32(offset, 16).ToString();
+                        machineCode.machineCode = machineCode.machineCode + Convert.ToString(int.Parse(offset), 2).PadLeft(5, '0');
+                    }
                 }
                 else { 
                 machineCode.machineCode = machineCode.machineCode + (registerDb.getRegisterValue(variableList[0]));
@@ -86,8 +101,9 @@ namespace Mips16bits.Mips
 
                 foreach (var item in Form1.ınstructions)
                 {
+            
 
-                    if (item.data.Replace(":", "") == constants[0])
+                    if (item.data.Replace(":","")  == constants[0]) 
                     {
                         Console.WriteLine(item.insMemory);
                         machineCode.machineCode = machineCode.machineCode + Convert.ToString(item.insMemory, 2).PadLeft(11, '0');

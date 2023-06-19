@@ -24,6 +24,7 @@ namespace Mips16bits
         int insMemory =0x00000000;
         public static List<Instruction> ınstructions = new List<Instruction>();
         public static int pcCounter = 0x00000000;
+        public static int i = 0;
         MipsCompiler compiler = new MipsCompiler();
 
 
@@ -115,19 +116,23 @@ namespace Mips16bits
         public void runInstruction()
             
         {
-       
-         
-            foreach (var item in ınstructions)
+            for( i=0 ; i<=ınstructions.Count; i++)
             {
-           
-             
-                if (pcCounter == item.insMemory)
+
+                if (pcCounter == ınstructions[i].insMemory)
                 {
-                    compiler.compiler(item);
-                                 
+                    if (ınstructions[i].data == "exit")
+                    {
+                        break;
+                    }
+                    compiler.compiler(ınstructions[i]);
+
+
                 }
-             
+
             }
+         
+            
             registerdb.assignValue(registerdb.getRegister("$pc"), (pcCounter-2).ToString("x8"));
             ınstructions.Clear();
             pcCounter = 0x00000000;

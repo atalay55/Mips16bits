@@ -21,6 +21,7 @@ namespace Mips16bits.Compiler
         Validator validator = new Validator();
         Operation operation = new Operation();
         ConverMipsToMachine converToMac = new ConverMipsToMachine();
+        int temp = 0;
 
         public void compiler(Instruction instructions)
         {
@@ -116,6 +117,13 @@ namespace Mips16bits.Compiler
                             registerDb.assignValue(rd, rd.value);
                             Form1.pcCounter = Form1.pcCounter + 2;
                             break;
+
+                        case "jr":
+                            Register r = registerDb.getRegister("$ra");
+                            Form1.pcCounter = Convert.ToInt32(r.value, 16);
+                            Form1.i = temp;
+                            Form1.pcCounter = Form1.pcCounter + 2;
+                            break;
                         default:
                             break;
                     }
@@ -207,14 +215,28 @@ namespace Mips16bits.Compiler
 
 
                 case "J":
-                    parserData.Add("imm", data.machineCode.Substring(5));
-                    imm = parserData["imm"];
-             
-                    Form1.pcCounter = Convert.ToInt32(imm, 2) + 2;
-                    break;
+                  
+                    switch (funcName)
+                    {
+                        case "j":
+                            parserData.Add("imm", data.machineCode.Substring(5));
+                            imm = parserData["imm"];
+                            Form1.pcCounter = Convert.ToInt32(imm, 2) + 2;
+                            break;
+                        case "jal":
 
-                default:
-              
+                            parserData.Add("imm", data.machineCode.Substring(5));
+                            imm = parserData["imm"];
+                            Register r = registerDb.getRegister("$ra");
+                            Console.WriteLine(Form1.pcCounter);
+                            r.value = "0x"+ Form1.pcCounter.ToString("x8");
+                            temp = Form1.i;
+                            Form1.pcCounter = Convert.ToInt32(imm, 2) + 2;
+                            break;
+                        default:
+                            break;
+                    }
+
                     break;
 
                 
