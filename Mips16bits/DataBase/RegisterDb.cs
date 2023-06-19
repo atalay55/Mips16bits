@@ -20,7 +20,7 @@ namespace Mips16bits.DataBase
             new Register("$t3","5","0x00000000","101"),
             new Register("$sp","6","0x00000000","110"),
             new Register("$ra","7","0x00000000","111"),
-            new Register("$pc","8","0x00000000","000"),
+            new Register("$pc","8","00000000","000"),
         };
 
         }

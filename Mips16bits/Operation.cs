@@ -122,8 +122,7 @@ namespace Mips16bits
             }
             else
             {
-                Console.WriteLine(num1);
-                Console.WriteLine(num2);
+    
 
                 return ((Convert.ToInt32(num2, 16) == Convert.ToInt32(num1, 16)) ? 1 : 0).ToString();
             }
@@ -314,7 +313,7 @@ namespace Mips16bits
             int number;
             if (int.TryParse(num2, System.Globalization.NumberStyles.HexNumber, null, out number))
             {
-                string addressint = (Convert.ToInt64(num1, 16) + (int.Parse(num2))).ToString();
+                string addressint = (Convert.ToInt64(num1, 16) + Convert.ToInt64(num2, 2)).ToString();
                 string addresHex = "0x" + int.Parse(addressint).ToString("X");
 
                 //this.result = this.dataDb.getData().Where(p => Convert.ToInt32(p.adress, 16) == Convert.ToInt32(addresHex, 16)).First();
@@ -324,7 +323,7 @@ namespace Mips16bits
             }
             else
             {
-                string addressint = (Convert.ToInt64(num2, 16) + Convert.ToInt64(num1, 16)).ToString();
+                string addressint = (Convert.ToInt64(num2, 2) + Convert.ToInt64(num1, 16)).ToString();
                 string addresHex = "0x" + int.Parse(addressint).ToString("X");
 
                 // this.result = this.dataDb.getData().Where(p => Convert.ToInt32(p.adress, 16) == Convert.ToInt32(addresHex, 16)).First();
@@ -342,8 +341,9 @@ namespace Mips16bits
             int number;
             if (int.TryParse(num2, System.Globalization.NumberStyles.HexNumber, null, out number))
             {
-                string addressint = (Convert.ToInt32(num1, 16) + (int.Parse(num2))).ToString();
+                string addressint = (Convert.ToInt32(num1, 16) + Convert.ToInt32(num2, 2)).ToString();
                 string addresHex = "0x" + int.Parse(addressint).ToString("X");
+
                 // this.result = this.dataDb.getData().Where(p => Convert.ToInt32(p.adress, 16) == Convert.ToInt32(addresHex, 16)).First();
 
                 return (addresHex);

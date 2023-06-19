@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mips16bits.Entity
 {
-    class Instruction
+    public class Instruction
     {
         public Instruction(string data, int insMemory)
         {

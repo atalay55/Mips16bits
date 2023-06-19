@@ -7,7 +7,7 @@ namespace Mips16bits.Entity
     class Data
     {
 
-        public Data(string number, string adress, string value0, string value1, string value2, string value3)
+        public Data( string adress, string value0, string value1, string value2, string value3, string number)
         {
             this.adress = adress;
             this.value0 = value0;

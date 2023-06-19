@@ -59,7 +59,7 @@ namespace Mips16bits
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1031, 12);
+            this.listView1.Location = new System.Drawing.Point(1087, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(245, 466);
             this.listView1.TabIndex = 3;
@@ -81,7 +81,7 @@ namespace Mips16bits
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(840, 143);
+            this.button1.Location = new System.Drawing.Point(885, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 44);
             this.button1.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace Mips16bits
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(840, 218);
+            this.button2.Location = new System.Drawing.Point(885, 222);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 44);
             this.button2.TabIndex = 5;
@@ -108,9 +108,9 @@ namespace Mips16bits
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(74, 449);
+            this.listView2.Location = new System.Drawing.Point(55, 467);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(621, 187);
+            this.listView2.Size = new System.Drawing.Size(712, 187);
             this.listView2.TabIndex = 6;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -134,7 +134,7 @@ namespace Mips16bits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1288, 675);
+            this.ClientSize = new System.Drawing.Size(1344, 675);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

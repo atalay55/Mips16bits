@@ -16,23 +16,25 @@ namespace Mips16bits
 {
     public partial class Form1 : Form
     {
-        RegisterDb registerdb;
+        DataDb dataDb = new DataDb();
+        RegisterDb registerdb = new RegisterDb();
         ListViewItem item;
-        ConverMipsToMachine mipsCon;
+        ConverMipsToMachine convert = new ConverMipsToMachine();
         Instruction ins = new Instruction();
-        int insMemory = 0x00400000;
-        List<Instruction> ınstructions;
+        int insMemory =0x00000000;
+        public static List<Instruction> ınstructions = new List<Instruction>();
+        public static int pcCounter = 0x00000000;
+        MipsCompiler compiler = new MipsCompiler();
 
 
         public Form1()
         {
-            mipsCon = new ConverMipsToMachine();
-            this.ınstructions = new List<Instruction>();
-            registerdb = new RegisterDb();
+
+
             InitializeComponent();
         }
 
-     
+
         private void showAllRegister()
         {
             foreach (Register s in registerdb.getRegisters())
@@ -47,10 +49,26 @@ namespace Mips16bits
             }
         }
 
+        private void showAllData()
+        {
+            foreach (Data d in dataDb.getDatas())
+            {
+
+                this.item = new ListViewItem(d.adress);
+                this.item.SubItems.Add(d.value0);
+                this.item.SubItems.Add(d.value1);
+
+                listView2.Items.Add(item);
+
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.listView1.Items.Clear();
+            this.listView2.Items.Clear();
             showAllRegister();
+            showAllData();
         }
 
         public void createInstruction()
@@ -63,7 +81,8 @@ namespace Mips16bits
 
 
                 string[] variableList = string.Join("", richTextBox1.Lines[i].Split(" ").Skip(1).ToArray()).Split(",");
-                
+             
+
                 if (string.IsNullOrEmpty(richTextBox1.Lines[i]))
                 {
                     continue;
@@ -72,18 +91,13 @@ namespace Mips16bits
 
                 else
                 {
-
-                    int val = this.insMemory + (k * 4);
+                    
+                    int val = this.insMemory + (k * 2);
                     ins = new Instruction(richTextBox1.Lines[i], val);
-                    this.ınstructions.Add(ins);
-                   
-                    MipsCompiler compiler = new MipsCompiler(mipsCon.converToMac(ins));
 
-                    if (richTextBox1.Lines[i].Contains(":"))
-                    {
-                        //labes.Add(richTextBox1.Lines[i].Substring(0, richTextBox1.Lines[i].Length - 1), val);
+                    ınstructions.Add(ins);
+    
 
-                    }
                     k++;
 
 
@@ -92,14 +106,41 @@ namespace Mips16bits
 
 
             }
+          
 
+            runInstruction();
         }
 
+
+        public void runInstruction()
+            
+        {
+       
+         
+            foreach (var item in ınstructions)
+            {
+           
+             
+                if (pcCounter == item.insMemory)
+                {
+                    compiler.compiler(item);
+                                 
+                }
+             
+            }
+            registerdb.assignValue(registerdb.getRegister("$pc"), (pcCounter-2).ToString("x8"));
+            ınstructions.Clear();
+            pcCounter = 0x00000000;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             createInstruction();
+
             this.listView1.Items.Clear();
+            this.listView2.Items.Clear();
             showAllRegister();
+            showAllData();
+         
         }
 
         private void button2_Click(object sender, EventArgs e)
