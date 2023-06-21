@@ -26,6 +26,7 @@ namespace Mips16bits.Compiler
         public void compiler(Instruction instructions)
         {
             data = converToMac.converToMac(instructions);
+            instructions.machCode = data.machineCode;
             string[] arraay = data.mipsCode.Split(" ");
             parserData.Add("type", valueTable.getType(arraay[0]));
             parserData.Add("oppCode", data.machineCode.Substring(0, 5));
