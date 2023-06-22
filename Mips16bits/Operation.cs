@@ -14,7 +14,7 @@ namespace Mips16bits
             int number;
             if (int.TryParse(num2, System.Globalization.NumberStyles.HexNumber, null, out number))
             {
-                return (Convert.ToInt64(num1, 16) + (int.Parse(num2, System.Globalization.NumberStyles.AllowLeadingSign))).ToString();
+                return (Convert.ToInt32(num1, 16) + (int.Parse(num2, System.Globalization.NumberStyles.AllowLeadingSign))).ToString();
 
             }
             else if (int.TryParse(num2, System.Globalization.NumberStyles.HexNumber, null, out number) && int.TryParse(num1, System.Globalization.NumberStyles.HexNumber, null, out number))
@@ -23,12 +23,12 @@ namespace Mips16bits
             }
             else if (num2.Contains("-"))
             {
-                return (Convert.ToInt64(num1, 16) - int.Parse(num2.TrimStart('-'))).ToString();
+                return (Convert.ToInt32(num1, 16) - int.Parse(num2.TrimStart('-'))).ToString();
             }
             else
             {
 
-                return (Convert.ToInt64(num2, 16) + Convert.ToInt64(num1, 16)).ToString();
+                return (Convert.ToInt32(num2, 16) + Convert.ToInt32(num1, 16)).ToString();
             }
 
 

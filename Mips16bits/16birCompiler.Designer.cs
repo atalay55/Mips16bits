@@ -170,7 +170,7 @@ namespace Mips16bits
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(440, 65);
             this.label1.TabIndex = 8;
-            this.label1.Text = "FEM    Compiler";
+            this.label1.Text = "MFE    Compiler";
             // 
             // button4
             // 
